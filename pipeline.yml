@@ -67,6 +67,7 @@ pipeline {
                     echo "Date actuelle : ${currentDate}"
                     echo "Date cible : ${targetDate}"
                     echo "Nombre de challenges sélectionnés : ${challengesList.size()}"
+                    echo "Liste des challenges sélectionnés : ${challengesList}"
 
                     if (currentDate.after(targetDate) && challengesList.size() >= 8) {
                         echo "Dans les temps"
