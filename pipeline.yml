@@ -25,8 +25,11 @@ pipeline {
                     def tempFile = File.createTempFile('temp_script', '.py')
                     tempFile.text = codePython
 
+                    // Ajouter un délai avant de lire le fichier temporaire
+                    sleep time: 5, unit: 'SECONDS'
+
                     // Exécuter le code Python à partir du fichier temporaire
-                    def result = bat(script: "python ${tempFile} 2>&1", returnStatus: true)
+                    def result = bat(script: "C:\\chemin\\vers\\python.exe ${tempFile} 2>&1", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
