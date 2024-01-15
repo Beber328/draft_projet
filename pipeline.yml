@@ -4,8 +4,36 @@ pipeline {
         string(name: "NOM", description:'Entrez votre nom')
         string(name: "PRENOM", description:'Entrez votre prénom')
         password(name: "Projet_DevOps", description:'Entrer un mot de passe')
-    }
-    
+        choice(
+    name: 'CHALLENGES',
+    choices: [
+        "Janvier | Commencez à écrire un journal",
+        "Fevrier | Faire de votre maison un espace agréable",
+        "Fevrier | Déconnecter du reste du monde et où faire son nid",
+        "Mars | Méditer avoir plus de temps pour soi",
+        "Mars | Mieux manger",
+        "Mars | Faire plus d'exercice",
+        "Mars | Arrêter de fumer",
+        "Avril | Faire des petits gestes",
+        "Avril | Dire des paroles aimables",
+        "Mai | Prenez des cours de salsa",
+        "Mai | Inscrivez-vous à un marathon",
+        "Juin | Sortir dîner",
+        "Juin | Passer du temps avec les vôtres",
+        "Juillet | Profiter des grandes vacances",
+        "Juillet | Profiter des festivals",
+        "Aout | Prendre une couverture",
+        "Aout | Dormir une nuit sur la plage",
+        "Septembre | Explorez de nouveaux terrains",
+        "Septembre | Sortir de sa zône de confort",
+        "Octobre | Savoir ce recycler",
+        "Octobre | Acquérir de nouvel connaissance",
+        "Novembre | Apprendre un nouvel instrument",
+        "Décembre | Faire une prise de conscience sur comment respirer d'environ 5min par jour"
+    ],
+    description: 'Entrer les challenge du mois que vous souahitez faire : '
+)
+
     stages {
         stage('Exécuter le script Python') {
             steps {
@@ -14,7 +42,7 @@ pipeline {
                     echo "Nom: ${params.NOM}"
                     echo "Prénom: ${params.PRENOM}"
                     echo "Mot de passe: ${params.Projet_DevOps}"
-
+                    echo "Challenge : ${params.CHALLENGES}"
                     // Exécuter le code Python à partir du fichier date.py
                     def result = bat(script: "python date.py 2>&1", returnStatus: true)
 
