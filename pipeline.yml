@@ -5,9 +5,9 @@ pipeline {
         string(name: "PRENOM", description: 'Entrez votre prénom')
         password(name: "Projet_DevOps", description: 'Entrer un mot de passe')
         multiSelect(name: 'CHALLENGES', choices: [
-            "Janvier | Commencer à écrir un journal",
-            "Fevrier | Faire de votre maison un espace agréable",
-            "Fevrier | Déconnecter du reste du monde et où faire son nid"
+            "Janvier | Commencer à écrir un journal"
+            #"Fevrier | Faire de votre maison un espace agréable",
+            #"Fevrier | Déconnecter du reste du monde et où faire son nid"
         ], description: 'Sélectionnez les challenges du mois que vous souhaitez faire : ')
             }
     stages {
