@@ -57,9 +57,9 @@ pipeline {
                     // Vérifier la date et le nombre de challenges
                     def currentDate = new Date()
                     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
-                    def challenges = params.CHALLENGES.split(',')
-
-                    if (currentDate.after(targetDate) && challenges.size() >= 8) {
+                    def challengesList = params.CHALLENGES.tokenize(',')
+                    
+                    if (currentDate.after(targetDate) && challengesList.size() >= 8) {
                         echo "Dans les temps"
                     } else {
                         echo "En retard sur les challenges"
