@@ -1,26 +1,26 @@
 pipeline {
     agent any
     parameters {
-        string(name: "NOM", description:'Entrez votre nom')
-        string(name: "PRENOM", description:'Entrez votre prénom')
-        password(name: "Projet_DevOps", description:'Entrer un mot de passe')
-        choice(
-    name: 'CHALLENGES',
-    choices: [
-        "Janvier | Commencez à écrire un journal"    
-        ],
-    description: 'Entrer les challenge du mois que vous souahitez faire : '
-)
-
+        string(name: "NOM", description: 'Entrez votre nom')
+        string(name: "PRENOM", description: 'Entrez votre prénom')
+        password(name: "Projet_DevOps", description: 'Entrer un mot de passe')
+        choice(name: 'CHALLENGES', choices: [
+            "Janvier | Commencer à écrir un journal"
+        ], description: 'Sélectionnez les challenges du mois que vous souhaitez faire : ')
+            }
     stages {
+        stage('Afficher les paramètres') {
+            steps {
+                echo "Nom: ${params.NOM}"
+                echo "Prénom: ${params.PRENOM}"
+                echo "Mot de passe: ${params.Projet_DevOps}"
+                echo "Challenges : ${params.CHALLENGES}"
+            }
+        }
+
         stage('Exécuter le script Python') {
             steps {
                 script {
-                    // Afficher les paramètres
-                    echo "Nom: ${params.NOM}"
-                    echo "Prénom: ${params.PRENOM}"
-                    echo "Mot de passe: ${params.Projet_DevOps}"
-                    echo "Challenge : ${params.CHALLENGES}"
                     // Exécuter le code Python à partir du fichier date.py
                     def result = bat(script: "python date.py 2>&1", returnStatus: true)
 
@@ -31,4 +31,3 @@ pipeline {
         }
     }
 }
-
