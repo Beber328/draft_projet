@@ -57,12 +57,16 @@ pipeline {
             }
         }
 
-        stage('Vérifier la date et le nombre de challenges') {
+        stage('Vérifier les valeurs') {
             steps {
                 script {
                     def currentDate = new Date()
                     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
                     def challengesList = params.CHALLENGES.tokenize(',')
+
+                    echo "Date actuelle : ${currentDate}"
+                    echo "Date cible : ${targetDate}"
+                    echo "Nombre de challenges sélectionnés : ${challengesList.size()}"
 
                     if (currentDate.after(targetDate) && challengesList.size() >= 8) {
                         echo "Dans les temps"
