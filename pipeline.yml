@@ -10,11 +10,16 @@ pipeline {
         stage('Exécuter le script Python') {
             steps {
                 script {
+                    // Afficher les paramètres
+                    echo "Nom: ${params.NOM}"
+                    echo "Prénom: ${params.PRENOM}"
+                    echo "Mot de passe: ${params.Projet_DevOps}"
+
                     // Lire le contenu du fichier Python depuis le même répertoire
-                    def codePython = readFile 'date.py'
+                    def codePython = readFile 'script.py'
 
                     // Exécuter le code Python
-                    def result = bat(script: "python -c '${codePython}'", returnStatus: true)
+                    def result = bat(script: "python -c \"${codePython}\"", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
