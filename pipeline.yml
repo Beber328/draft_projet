@@ -59,7 +59,7 @@ pipeline {
                     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
                     def challenges = params.CHALLENGES.split(',')
 
-                    if (currentDate.after(targetDate) && challenges.size() < 8) {
+                    if (currentDate.after(targetDate) && challenges.size() >= 8) {
                         echo "En retard sur les challenges"
                     } else {
                         echo "Dans les temps"
