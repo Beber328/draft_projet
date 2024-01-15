@@ -50,6 +50,20 @@ pipeline {
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
+
+                    // Vérifier la date
+                    def currentDate = new Date()
+                    def targetDate = Date.parse("yyyy-MM-dd", "2024-01-17")
+
+                    if (currentDate > targetDate) {
+                        // Vérifier le nombre de challenges sélectionnés
+                        def selectedChallenges = params.CHALLENGES.split(',')
+                        if (selectedChallenges.size() < 8) {
+                            echo "En retard sur les challenges"
+                        } else {
+                            echo "Dans les temps"
+                        }
+                    }
                 }
             }
         }
