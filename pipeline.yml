@@ -5,7 +5,20 @@ pipeline {
         string(name: "PRENOM", description: 'Entrez votre prénom')
         password(name: "Projet_DevOps", description: 'Entrer un mot de passe')
         choice(name: 'CHALLENGES', choices: [
-            "Janvier | Commencer à écrir un journal","Fevrier | Faire de votre maison un espace agréable"
+            "Janvier | Commencer à écrir un journal","Fevrier | Faire de votre maison un espace agréable","Fevrier | Déconnecter du reste du monde et où faire son nid",
+            "Mars | Méditer avoir plus de temps pour soi",
+            "Mars | Mieux manger",
+            "Mars | Faire plus d'exercice",
+            "Mars | Arrêter de fumer",
+            "Avril | Faire des petits gestes",
+            "Avril | Dire des paroles aimables",
+            "Mai | Prenez des cours de salsa",
+            "Mai | Inscrivez-vous à un marathon",
+            "Juin | Sortir dîner",
+            "Juin | Passer du temps avec les vôtres",
+            "Juillet | Profiter des grandes vacances",
+            "Juillet | Profiter des festivals",
+            "Aout | Prendre une couverture"
         ], description: 'Sélectionnez les challenges du mois que vous souhaitez faire : ')
             }
     stages {
