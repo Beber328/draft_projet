@@ -1,32 +1,85 @@
-// ...
+// Import de la classe Date
+import java.text.SimpleDateFormat
 
-stage('Exécuter le script Python de comptage') {
-    steps {
-        script {
-            // Exécuter le script Python pour compter les challenges sélectionnés
-            def countResult = bat(script: "python count_challenges.py \"${params.CHALLENGES}\"", returnStatus: true)
+pipeline {
+    agent any
+    parameters {
+        string(name: "NOM", description: 'Entrez votre nom')
+        string(name: "PRENOM", description: 'Entrez votre prénom')
+        password(name: "Projet_DevOps", description: 'Entrer un mot de passe')
+        extendedChoice(
+            name: 'CHALLENGES',
+            description: 'Sélectionnez les challenges du mois que vous souhaitez faire :',
+            multiSelectDelimiter: ',',
+            type: 'PT_MULTI_SELECT',
+            value: '',
+            groovyScript: """
+                return [
+                    "Janvier | Commencer à écrire un journal",
+                    "Fevrier | Faire de votre maison un espace agréable",
+                    "Fevrier | Déconnecter du reste du monde et où faire son nid",
+                    "Mars | Méditer avoir plus de temps pour soi",
+                    "Mars | Mieux manger",
+                    "Mars | Faire plus d'exercice",
+                    "Mars | Arrêter de fumer",
+                    "Avril | Faire des petits gestes",
+                    "Avril | Dire des paroles aimables",
+                    "Mai | Prenez des cours de salsa",
+                    "Mai | Inscrivez-vous à un marathon",
+                    "Juin | Sortir dîner",
+                    "Juin | Passer du temps avec les vôtres",
+                    "Juillet | Profiter des grandes vacances",
+                    "Juillet | Profiter des festivals",
+                    "Aout | Prendre une couverture"
+                ]
+            """
+        )
+    }
+    stages {
+        stage('Afficher les paramètres') {
+            steps {
+                echo "Nom: ${params.NOM}"
+                echo "Prénom: ${params.PRENOM}"
+                echo "Mot de passe: ${params.Projet_DevOps}"
+                echo "Challenges : ${params.CHALLENGES}"
+            }
+        }
 
-            // Afficher la sortie de l'exécution
-            echo "Résultat de l'exécution du script de comptage : ${countResult}"
+        stage('Exécuter le script Python') {
+            steps {
+                script {
+                    // Exécuter le code Python à partir du fichier date.py avec les challenges sélectionnés
+                    def result = bat(script: "python date.py \"${params.CHALLENGES}\" 2>&1", returnStatus: true)
 
-            // Vérifier la date et le nombre de challenges
-            checkDateAndChallenges(params.CHALLENGES, countResult)
+                    // Afficher la sortie de l'exécution
+                    echo "Résultat de l'exécution du script : ${result}"
+
+                    // Exécuter le script Python pour compter les challenges sélectionnés
+                    def countResult = bat(script: "python count_challenges.py \"${params.CHALLENGES}\"", returnStatus: true)
+
+                    // Afficher le résultat du script de comptage
+                    echo "Résultat de l'exécution du script de comptage : ${countResult}"
+
+                    // Vérifier la date et le nombre de challenges
+                    checkDateAndChallenges(params.CHALLENGES, countResult)
+                }
+            }
         }
     }
-}
 
-// Fonction pour vérifier la date et le nombre de challenges
-def checkDateAndChallenges(selectedChallenges, countResult) {
-    // Utilisation de SimpleDateFormat
-    def currentDate = new Date()
-    def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
+    // Fonction pour vérifier la date et le nombre de challenges
+    def checkDateAndChallenges(selectedChallenges, countResult) {
+        // Utilisation de SimpleDateFormat
+        def currentDate = new Date()
+        def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
 
-    if (currentDate.after(targetDate)) {
-        // Vérifier le résultat du script de comptage
-        if (countResult.toInteger() > 8) {
-            echo "Dans les temps"
-        } else {
-            echo "En retard sur les challenges"
+        if (currentDate.after(targetDate)) {
+            // Vérifier le résultat du script de comptage
+            if (countResult.toInteger() > 8) {
+                echo "Dans les temps"
+            } else {
+                echo "En retard sur les challenges"
+            }
         }
     }
 }
