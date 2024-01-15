@@ -4,7 +4,7 @@ pipeline {
         string(name: "NOM", description: 'Entrez votre nom')
         string(name: "PRENOM", description: 'Entrez votre prénom')
         password(name: "Projet_DevOps", description: 'Entrer un mot de passe')
-        multiSelect(name: 'CHALLENGES', choices: [
+        choice(name: 'CHALLENGES', choices: [
             "Janvier | Commencer à écrir un journal"
         ], description: 'Sélectionnez les challenges du mois que vous souhaitez faire : ')
             }
