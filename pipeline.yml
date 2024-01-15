@@ -17,13 +17,16 @@ pipeline {
 
                     // Lire le contenu du fichier Python depuis le même répertoire
                     def codePython = readFile 'date.py'
+                    
+                    // Afficher le contenu du fichier Python
+                    echo "Contenu du fichier Python : ${codePython}"
 
                     // Écrire le code Python dans un fichier temporaire
                     def tempFile = File.createTempFile('temp_script', '.py')
                     tempFile.text = codePython
 
                     // Exécuter le code Python à partir du fichier temporaire
-                    def result = bat(script: "python ${tempFile}", returnStatus: true)
+                    def result = bat(script: "python ${tempFile} 2>&1", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
