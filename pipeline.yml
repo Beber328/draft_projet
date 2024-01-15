@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: "NOM", description:'Entrez votre nom')
+        string(name: "PRENOM", description:'Entrez votre prénom')
+        password(name: "Projet_DevOps", description:'Entrer un mot de passe')
+    }
+    
+    stages {
+        stage('Exécuter le script Python') {
+            steps {
+                script {
+                    // Lire le contenu du fichier Python depuis le même répertoire
+                    def codePython = readFile 'date.py'
+
+                    // Exécuter le code Python
+                    def result = sh(script: "python -c '${codePython}'", returnStatus: true)
+
+                    // Afficher la sortie de l'exécution
+                    echo "Résultat de l'exécution du script : ${result}"
+                }
+            }
+        }
+    }
+}
