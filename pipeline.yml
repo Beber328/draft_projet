@@ -11,10 +11,10 @@ pipeline {
             steps {
                 script {
                     // Lire le contenu du fichier Python depuis le même répertoire
-                    def codePython = readFile 'https://github.com/Beber328/draft_projet/blob/main/date.py'
+                    def codePython = readFile 'date.py'
 
                     // Exécuter le code Python
-                    def result = sh(script: "python -c '${codePython}'", returnStatus: true)
+                    def result = bat(script: "python -c '${codePython}'", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
