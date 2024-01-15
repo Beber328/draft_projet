@@ -16,7 +16,7 @@ pipeline {
                     echo "Mot de passe: ${params.Projet_DevOps}"
 
                     // Lire le contenu du fichier Python depuis le même répertoire
-                    def codePython = readFile 'script.py'
+                    def codePython = readFile 'date.py'
 
                     // Exécuter le code Python
                     def result = bat(script: "python -c \"${codePython}\"", returnStatus: true)
