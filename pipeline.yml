@@ -60,9 +60,9 @@ pipeline {
                     def challenges = params.CHALLENGES.split(',')
 
                     if (currentDate.after(targetDate) && challenges.size() >= 8) {
-                        echo "En retard sur les challenges"
-                    } else {
                         echo "Dans les temps"
+                    } else {
+                        echo "En retard sur les challenges"
                     }
                 }
             }
