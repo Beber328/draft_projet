@@ -51,20 +51,25 @@ pipeline {
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
 
-                    // Vérifier la date
-                    def currentDate = new Date()
-                    def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
-
-                    if (currentDate.after(targetDate)) {
-                        // Vérifier le nombre de challenges sélectionnés
-                        def selectedChallenges = params.CHALLENGES.split(',')
-                        if (selectedChallenges.size() < 8) {
-                            echo "En retard sur les challenges"
-                        } else {
-                            echo "Dans les temps"
-                        }
-                    }
+                    // Vérifier la date et le nombre de challenges
+                    checkDateAndChallenges(params.CHALLENGES)
                 }
+            }
+        }
+    }
+
+    // Fonction pour vérifier la date et le nombre de challenges
+    def checkDateAndChallenges(selectedChallenges) {
+        def currentDate = new Date()
+        def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
+
+        if (currentDate.after(targetDate)) {
+            // Vérifier le nombre de challenges sélectionnés
+            def challenges = selectedChallenges.split(',')
+            if (challenges.size() < 8) {
+                echo "En retard sur les challenges"
+            } else {
+                echo "Dans les temps"
             }
         }
     }
