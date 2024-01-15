@@ -48,33 +48,30 @@ pipeline {
         stage('Exécuter le script Python') {
             steps {
                 script {
-                    // Exécuter le code Python à partir du fichier date.py avec les challenges sélectionnés
-                    def result = bat(script: "python date.py \"${params.CHALLENGES}\" 2>&1", returnStatus: true)
-
-                    // Afficher la sortie de l'exécution
-                    echo "Résultat de l'exécution du script : ${result}"
-                }
-            }
-        }
-
-        stage('Vérifier les valeurs') {
-            steps {
-                script {
                     def currentDate = new Date()
                     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
 
-                    // Extraire uniquement les mois de la liste
-                    def selectedMonths = params.CHALLENGES.replaceAll(/.*\| (.+?),?.*/, '$1').split(', ')
+                    if (currentDate.before(targetDate)) {
+                        echo "Date actuelle : ${currentDate}"
+                        echo "Date cible : ${targetDate}"
 
-                    echo "Date actuelle : ${currentDate}"
-                    echo "Date cible : ${targetDate}"
-                    echo "Nombre de challenges sélectionnés : ${selectedMonths.size()}"
-                    echo "Liste des challenges sélectionnés : ${selectedMonths}"
+                        // Exécuter le code Python à partir du fichier count_challenges.py avec les challenges sélectionnés
+                        def countResult = bat(script: "python count_challenges.py \"${params.CHALLENGES}\" 2>&1", returnStatus: true)
 
-                    if (currentDate.after(targetDate) && selectedMonths.size() >= 8) {
-                        echo "Dans les temps"
+                        // Afficher la sortie de l'exécution
+                        echo "Résultat de l'exécution du script de comptage : ${countResult}"
+
+                        // Vérifier le nombre de challenges sélectionnés
+                        def challengesCount = countResult.toInteger()
+
+                        if (challengesCount >= 8) {
+                            echo "Dans les temps"
+                        } else {
+                            echo "En retard sur les challenges"
+                        }
                     } else {
-                        echo "En retard sur les challenges"
+                        echo "Date actuelle : ${currentDate}"
+                        echo "Date cible dépassée. En retard sur les challenges."
                     }
                 }
             }
