@@ -7,9 +7,8 @@ pipeline {
         choice(
     name: 'CHALLENGES',
     choices: [
-        "Janvier | Commencez à écrire un journal",
-        "Décembre | Faire une prise de conscience sur comment respirer d'environ 5min par jour"
-    ],
+        "Janvier | Commencez à écrire un journal"    
+        ],
     description: 'Entrer les challenge du mois que vous souahitez faire : '
 )
 
