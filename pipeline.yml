@@ -57,9 +57,10 @@ pipeline {
             }
         }
     }
+}
 
-    // Fonction pour vérifier la date et le nombre de challenges
-    def checkDateAndChallenges(selectedChallenges) {
+// Fonction pour vérifier la date et le nombre de challenges
+def checkDateAndChallenges(selectedChallenges) {
     def currentDate = new Date()
     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
 
