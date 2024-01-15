@@ -62,14 +62,16 @@ pipeline {
                 script {
                     def currentDate = new Date()
                     def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
-                    def challengesList = params.CHALLENGES.tokenize(',')
+
+                    // Extraire uniquement les mois de la liste
+                    def selectedMonths = params.CHALLENGES.replaceAll(/.*\| (.+?),?.*/, '$1').split(', ')
 
                     echo "Date actuelle : ${currentDate}"
                     echo "Date cible : ${targetDate}"
-                    echo "Nombre de challenges sélectionnés : ${challengesList.size()}"
-                    echo "Liste des challenges sélectionnés : ${challengesList}"
+                    echo "Nombre de challenges sélectionnés : ${selectedMonths.size()}"
+                    echo "Liste des challenges sélectionnés : ${selectedMonths}"
 
-                    if (currentDate.after(targetDate) && challengesList.size() >= 8) {
+                    if (currentDate.after(targetDate) && selectedMonths.size() >= 8) {
                         echo "Dans les temps"
                     } else {
                         echo "En retard sur les challenges"
