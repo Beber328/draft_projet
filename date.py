@@ -1,5 +1,5 @@
-from datetime import datetime
 import sys
+import codecs
 
 def check_date_and_challenges(selected_challenges):
     # Obtenez la date et l'heure actuelles
