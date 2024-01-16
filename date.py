@@ -11,7 +11,7 @@ def check_date_and_challenges(selected_challenges):
     # Comparez la date actuelle avec la date limite
     if date_actuelle > date_limite:
         # Vérifiez le nombre de challenges sélectionnés
-        if len(selected_challenges.split(',')) > 8:
+        if len(selected_challenges.split(',')) > 11:
             print("Dans les temps")
         else:
             print("En retard sur les challenges")
