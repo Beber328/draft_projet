@@ -17,6 +17,7 @@ pipeline {
         )
     
         // Paramètre de sélection multiple pour les challenges
+        // Paramètre de sélection multiple pour les challenges
         extendedChoice(
             name: 'CHALLENGES',
             description: 'Choisissez le(s) challenge(s) pour ce mois',
@@ -26,15 +27,35 @@ pipeline {
                 def mois = build.getEnvironment(listener)['MOIS']
                 switch (mois) {
                     case 'Janvier':
-                        return ['Commencer à écrire un journal', 'Prendre du temps pour écrire']
+                        return ['Commencer à écrire un journal']
                     case 'Février':
                         return ['Faire de votre maison un espace agréable', 'Déconnecter du reste du monde et où faire son nid']
-                    // Ajoutez les cas pour les autres mois avec leurs challenges respectifs
+                    case 'Mars':
+                        return ['Méditer avoir plus de temps pour soi', 'Mieux manger', 'Faire plus d\'exercice', 'Arrêter de fumer']
+                    case 'Avril':
+                        return ['Faire des petits gestes', 'Dire des paroles aimables']
+                    case 'Mai':
+                        return ['Prenez des cours de salsa', 'Inscrivez-vous à un marathon']
+                    case 'Juin':
+                        return ['Sortir dîner', 'Passer du temps avec les vôtres']
+                    case 'Juillet':
+                        return ['Profiter des grandes vacances', 'Profiter des festivals']
+                    case 'Aout':
+                        return ['Prendre une couverture']
+                    case 'Septembre':
+                        return ['Explorez de nouveaux terrains', 'Sortir de sa zone de confort']
+                    case 'Octobre':
+                        return ['Savoir se recycler', 'Acquérir de nouvelles connaissances']
+                    case 'Novembre':
+                        return ['Apprendre un nouvel instrument']
+                    case 'Decembre':
+                        return ['Faire une prise de conscience sur comment respirer d\'environ 5min par jour']
                     default:
                         return []
                 }
             """
         )
+
     }
 
 
