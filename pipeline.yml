@@ -82,16 +82,19 @@ pipeline {
         stage('Fevrier') {
             steps {
                 script {
-                    def challenges = "${params.CHALLENGES}"
+                    def challenges = "${params.CHALLENGES}".tokenize(',').size()
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Fevrier" && today == '1') {
-                        challenges = "Faire de votre maison un espace agreable, Deconnecter du reste du monde et ou faire son nid"
+                    // Vérifier si la valeur de challenges est égale à la constante
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Fevrier" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Fevrier" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Janvier" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
