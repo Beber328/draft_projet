@@ -54,7 +54,7 @@ pipeline {
                     echo "Résultat de l'exécution du script : ${result}"
 
                     // Envoi du nombre de challenges au script Python ci-dessus
-                    def pythonResult = bat(script: "python script.py \"${escapedChallenges}\"", returnStatus: true)
+                    def pythonResult = bat(script: "python date.py \"${escapedChallenges}\"", returnStatus: true)
                     // Afficher la sortie du script Python ci-dessus
                     echo "Résultat de l'exécution du script Python : ${pythonResult}"
                 }
