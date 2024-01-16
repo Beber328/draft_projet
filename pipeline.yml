@@ -4,7 +4,7 @@ pipeline {
         string(name: 'NOM', description: 'Veuillez indiquer votre nom')
         string(name: 'PRENOM', description: 'Veuillez indiquer votre prenom')
         password(name: 'SONAR_SERVER_PWD', description: 'Entrer votre mot de passe SONAR')
-        choice(name: 'MOIS', choices: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet','Aout', 'Septembre', 'Octobre','Novembre', 'Decembre'], description: 'Choisissez le(s) mois', multiSelect: true)
+        string(name: 'MOIS', description: 'Choisissez le(s) mois', defaultValue: 'Janvier', trim: false)
         choice(name: 'DATE_DU_JOUR', choices: ['1', '2', '3', '4', '5', '6', '7','8', '9', '10','11', '12','13', '14', '15', '16', '17', '18', '19','20', '21', '22','23', '24','25','26','27','28','29','30','31'], description: 'Quel est la date du jour ?')
         choice(name: 'CHALLENGES', choices: ["Janvier | Commencer a ecrire un journal",
                                               "Fevrier | Faire de votre maison un espace agreable",
