@@ -60,9 +60,8 @@ pipeline {
                 script {
                     // Définir la constante
                     def constante = "1"
-                    echo "$constante"
                     // Obtenir les valeurs des paramètres
-                    def challenges = "${params.CHALLENGES}"
+                    def challenges = "${params.CHALLENGES}".split(',').size()
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
         
