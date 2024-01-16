@@ -58,8 +58,6 @@ pipeline {
         stage('Janvier') {
             steps {
                 script {
-                    // Définir la constante
-                    def constante = "1"
                     // Obtenir les valeurs des paramètres
                     def challenges = "${params.CHALLENGES}".tokenize(',').size()
                     def today = "${params.DATE_DU_JOUR}"
@@ -68,12 +66,13 @@ pipeline {
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == 1) {
                         echo "Un seul challenge du mois de $mois est réalisé."
-                    } else if (challenges == 0 && mois == "Janvier" && today == '1') {
+                    } else if (challenges < 1 && mois == "Janvier" && today == '1') {
                         challenges = "Commencer a ecrire un journal"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges == 0 && mois == "Janvier" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -106,12 +105,12 @@ pipeline {
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Fevrier" && today == '1') {
+                    if (mois == "Mars" && today == '1') {
                         challenges = "Mediter avoir plus de temps pour soi, Mieux manger, Faire plus d'exercice, Arreter de fumer"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Fevrier" && today > '1' && today <= '20') {
+                    } else if (mois == "Mars" && today > '1' && today <= '20') {
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
