@@ -8,7 +8,7 @@ pipeline {
         // Paramètre de sélection pour le mois
         choice(
         name: 'MOIS',
-        choices: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        choices: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         description: 'Choisissez le mois'
         )
 
