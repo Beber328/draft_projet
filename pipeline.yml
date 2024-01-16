@@ -70,7 +70,6 @@ pipeline {
                     if (challenges == 1) {
                         echo "Un seul challenge du mois de $mois est réalisé."
                     } else if (challenges < 1 && mois == "Janvier" && today == '1') {
-                        challenges = "Commencer a ecrire un journal"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
