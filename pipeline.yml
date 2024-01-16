@@ -65,7 +65,7 @@ pipeline {
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
     
-                    echo "Paramètres : MOIS=${mois}, DATE_DU_JOUR=${today}, CHALLENGES=${params.CHALLENGES}"
+                    echo "Paramètres : MOIS=${mois}, DATE_DU_JOUR=${today}, CHALLENGES=${params.CHALLENGES}.split(',').size()"
     
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == constante) {
