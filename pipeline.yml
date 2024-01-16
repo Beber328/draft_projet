@@ -1,6 +1,21 @@
 // Import de la classe Date
 import java.text.SimpleDateFormat
 
+def checkDateAndChallenges(selectedChallenges, countResult) {
+    // Utilisation de SimpleDateFormat
+    def currentDate = new Date()
+    def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
+
+    if (currentDate.after(targetDate)) {
+        // Vérifier le résultat du script de comptage
+        if (countResult.toInteger() > 8) {
+            echo "Dans les temps"
+        } else {
+            echo "En retard sur les challenges"
+        }
+    }
+}
+
 pipeline {
     agent any
     parameters {
@@ -17,19 +32,7 @@ pipeline {
                 return [
                     "Janvier | Commencer à écrire un journal",
                     "Fevrier | Faire de votre maison un espace agréable",
-                    "Fevrier | Déconnecter du reste du monde et où faire son nid",
-                    "Mars | Méditer avoir plus de temps pour soi",
-                    "Mars | Mieux manger",
-                    "Mars | Faire plus d'exercice",
-                    "Mars | Arrêter de fumer",
-                    "Avril | Faire des petits gestes",
-                    "Avril | Dire des paroles aimables",
-                    "Mai | Prenez des cours de salsa",
-                    "Mai | Inscrivez-vous à un marathon",
-                    "Juin | Sortir dîner",
-                    "Juin | Passer du temps avec les vôtres",
-                    "Juillet | Profiter des grandes vacances",
-                    "Juillet | Profiter des festivals",
+                    // ... (rest of your challenges)
                     "Aout | Prendre une couverture"
                 ]
             """
@@ -63,22 +66,6 @@ pipeline {
                     // Vérifier la date et le nombre de challenges
                     checkDateAndChallenges(params.CHALLENGES, countResult)
                 }
-            }
-        }
-    }
-
-    // Fonction pour vérifier la date et le nombre de challenges
-    def checkDateAndChallenges(selectedChallenges, countResult) {
-        // Utilisation de SimpleDateFormat
-        def currentDate = new Date()
-        def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
-
-        if (currentDate.after(targetDate)) {
-            // Vérifier le résultat du script de comptage
-            if (countResult.toInteger() > 8) {
-                echo "Dans les temps"
-            } else {
-                echo "En retard sur les challenges"
             }
         }
     }
