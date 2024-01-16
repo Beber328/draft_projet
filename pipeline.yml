@@ -24,35 +24,29 @@ pipeline {
             multiSelectDelimiter: ',',
             type: 'PT_MULTI_SELECT',
             groovyScript: """
-                def mois = build.getEnvironment(listener)['MOIS']
-                switch (mois) {
-                    case 'Janvier':
-                        return ['Commencer à écrire un journal']
-                    case 'Février':
-                        return ['Faire de votre maison un espace agréable', 'Déconnecter du reste du monde et où faire son nid']
-                    case 'Mars':
-                        return ['Méditer avoir plus de temps pour soi', 'Mieux manger', 'Faire plus d\'exercice', 'Arrêter de fumer']
-                    case 'Avril':
-                        return ['Faire des petits gestes', 'Dire des paroles aimables']
-                    case 'Mai':
-                        return ['Prenez des cours de salsa', 'Inscrivez-vous à un marathon']
-                    case 'Juin':
-                        return ['Sortir dîner', 'Passer du temps avec les vôtres']
-                    case 'Juillet':
-                        return ['Profiter des grandes vacances', 'Profiter des festivals']
-                    case 'Aout':
-                        return ['Prendre une couverture']
-                    case 'Septembre':
-                        return ['Explorez de nouveaux terrains', 'Sortir de sa zone de confort']
-                    case 'Octobre':
-                        return ['Savoir se recycler', 'Acquérir de nouvelles connaissances']
-                    case 'Novembre':
-                        return ['Apprendre un nouvel instrument']
-                    case 'Decembre':
-                        return ['Faire une prise de conscience sur comment respirer d\'environ 5min par jour']
-                    default:
-                        return []
-                }
+                return[
+                "Janvier | Commencer a ecrire un journal",
+                "Fevrier | Faire de votre maison un espace agreable",
+                "Fevrier | Deconnecter du reste du monde et ou faire son nid",
+                "Mars | Mediter avoir plus de temps pour soi",
+                "Mars | Mieux manger",
+                "Mars | Faire plus d'exercice",
+                "Mars | Arreter de fumer",
+                "Avril | Faire des petits gestes",
+                "Avril | Dire des paroles aimables",
+                "Mai | Prenez des cours de salsa",
+                "Mai | Inscrivez-vous a un marathon",
+                "Juin | Sortir diner",
+                "Juin | Passer du temps avec les votres",
+                "Juillet | Profiter des grandes vacances",
+                "Juillet | Profiter des festivals",
+                "Aout | Prendre une couverture",
+                "Septembre | Explorez de nouveaux terrains",
+                "Septembre | Sortir de sa zone de confort",
+                "Octobre | Savoir se recycler",
+                "Octobre | Acquerir de nouvelles connaissances",
+                "Novembre | Apprendre un nouvel instrument",
+                "Decembre | Faire une prise de conscience sur comment respirer d'environ 5min par jour"]
             """
         )
 
