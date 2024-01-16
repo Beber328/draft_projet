@@ -57,7 +57,7 @@ pipeline {
     stages {
         stage('Janvier') {
             when{
-                expression {params.MOIS == "Janvier}
+                expression {params.MOIS == "Janvier"}
             }
             steps {
                 script {
@@ -83,6 +83,9 @@ pipeline {
             }
         }
         stage('Fevrier') {
+            when{
+                expression {params.MOIS == "Fevrier"}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}".tokenize(',').size()
