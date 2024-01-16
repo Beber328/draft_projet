@@ -68,7 +68,7 @@ pipeline {
                     echo "Paramètres : MOIS=${mois}, DATE_DU_JOUR=${today}, CHALLENGES=${params.CHALLENGES}, $challenges"
     
                     // Vérifier si la valeur de challenges est égale à la constante
-                    if (challenges == constante) {
+                    if (challenges >= constante) {
                         echo "Tous les challenges du mois de $mois sont réalisés."
                     } else if (mois == "Janvier" && today == '1') {
                         challenges = "Commencer a ecrire un journal"
