@@ -108,18 +108,23 @@ pipeline {
             }
         }
         stage('Mars') {
+            when{
+                    expression {params.MOIS == 'Mars'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Mars" && today == '1') {
-                        challenges = "Mediter avoir plus de temps pour soi, Mieux manger, Faire plus d'exercice, Arreter de fumer"
+                    if (challenges == 4) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 4 && mois == "Mars" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Mars" && today > '1' && today <= '20') {
+                    } else if (challenges < 4 && mois == "Mars" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -127,18 +132,23 @@ pipeline {
             }
         }
         stage('Avril') {
+            when{
+                    expression {params.MOIS == 'Avril'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Avril" && today == '1') {
-                        challenges = "Faire des petits gestes, Dire des paroles aimables"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Avril" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Avril" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Avril" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -146,18 +156,23 @@ pipeline {
             }
         }
         stage('Mai') {
+            when{
+                    expression {params.MOIS == 'Mai'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Mai" && today == '1') {
-                        challenges = "Prenez des cours de salsa, Inscrivez-vous a un marathon"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Mai" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Mai" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Mai" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -165,18 +180,23 @@ pipeline {
             }
         }
         stage('Juin') {
+            when{
+                    expression {params.MOIS == 'Juin'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Juin" && today == '1') {
-                        challenges = "Sortir diner, Passer du temps avec les votres"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Juin" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Juin" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Juin" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -184,18 +204,23 @@ pipeline {
             }
         }
         stage('Juillet') {
+            when{
+                    expression {params.MOIS == 'Juillet'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Juillet" && today == '1') {
-                        challenges = "Profiter des grandes vacances, Profiter des festivals"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Juillet" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Juillet" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Juillet" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -203,18 +228,23 @@ pipeline {
             }
         }
         stage('Aout') {
+            when{
+                    expression {params.MOIS == 'Aout'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Aout" && today == '1') {
-                        challenges = "Prendre une couverture"
+                    if (challenges == 1) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 1 && mois == "Aout" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Aout" && today > '1' && today <= '20') {
+                    } else if (challenges < 1 && mois == "Aout" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -222,18 +252,23 @@ pipeline {
             }
         }
         stage('Septembre') {
+            when{
+                    expression {params.MOIS == 'Septembre'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Septembre" && today == '1') {
-                        challenges = "Prendre une couverture"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Septembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Septembre" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Septembre" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -241,18 +276,23 @@ pipeline {
             }
         }
         stage('Octobre') {
+            when{
+                    expression {params.MOIS == 'Octobre'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Octobre" && today == '1') {
-                        challenges = "Savoir se recycler, Acquerir de nouvelles connaissances"
+                    if (challenges == 2) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 2 && mois == "Octobre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Octobre" && today > '1' && today <= '20') {
+                    } else if (challenges < 2 && mois == "Octobre" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -260,18 +300,23 @@ pipeline {
             }
         }
         stage('Novembre') {
+            when{
+                    expression {params.MOIS == 'Novembre'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Novembre" && today == '1') {
-                        challenges = "Apprendre un nouvel instrument"
+                    if (challenges == 1) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 1 && mois == "Novembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Novembre" && today > '1' && today <= '20') {
+                    } else if (challenges < 1 && mois == "Novembre" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
@@ -279,18 +324,23 @@ pipeline {
             }
         }
         stage('Decembre') {
+            when{
+                    expression {params.MOIS == 'Decembre'}
+            }
             steps {
                 script {
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
 
-                    if (mois == "Decembre" && today == '1') {
-                        challenges = "Faire une prise de conscience sur comment respirer d'environ 5min par jour"
+                    if (challenges == 1) {
+                        echo "Tout les challenge du mois de $mois est réalisé."
+                    } else if (challenges < 1 && mois == "Decembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Decembre" && today > '1' && today <= '20') {
+                    } else if (challenges < 1 && mois == "Decembre" && today > '1' && today <= '20') {
+                        echo "Bienvenue au mois de $mois"
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
