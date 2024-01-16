@@ -71,7 +71,7 @@ pipeline {
                     def countChallenges = selectedChallenges.split(',').size()
 
                     // Exécuter le script Python avec le nombre de challenges sélectionnés
-                    def result = bat(script: "python script.py ${countChallenges}", returnStatus: true)
+                    def result = bat(script: "python date.py ${countChallenges}", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
