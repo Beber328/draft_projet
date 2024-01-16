@@ -55,6 +55,28 @@ pipeline {
 
     /* voici un exemple de stage --- courage */
     stages {
+        stage('Set Parameters') {
+            steps {
+                script {
+                    // Obtenez le mois actuel
+                    def currentMonth = "${params.MOIS}"
+
+                    // Déterminez si le mois actuel correspond à celui spécifié dans le paramètre
+                    def runJanvier = currentMonth == params.MOIS
+
+                    // Affichez les informations pour le débogage (peut être retiré dans une version de production)
+                    echo "Mois actuel: ${currentMonth}"
+                    echo "Exécuter Janvier? ${runJanvier}"
+
+                    // Définissez le paramètre RUN_JANVIER en conséquence
+                    if (params.MOIS == 'Janvier') {
+                        booleanParam(name: 'RUN_JANVIER', defaultValue: runJanvier, description: 'Exécuter l\'étape Janvier')
+                    } else {
+                        booleanParam(name: 'RUN_JANVIER', defaultValue: false, description: 'Exécuter l\'étape Janvier')
+                    }
+                }
+            }
+        }
         stage('Janvier') {
             steps {
                 script {
