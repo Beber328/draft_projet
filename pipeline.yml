@@ -1,21 +1,3 @@
-// Import de la classe Date
-import java.text.SimpleDateFormat
-
-def checkDateAndChallenges(selectedChallenges, countResult) {
-    // Utilisation de SimpleDateFormat
-    def currentDate = new Date()
-    def targetDate = new SimpleDateFormat("yyyy-MM-dd").parse("2024-01-17")
-
-    if (currentDate.after(targetDate)) {
-        // Vérifier le résultat du script de comptage
-        if (countResult.toInteger() > 8) {
-            echo "Dans les temps"
-        } else {
-            echo "En retard sur les challenges"
-        }
-    }
-}
-
 pipeline {
     agent any
     parameters {
@@ -32,39 +14,67 @@ pipeline {
                 return [
                     "Janvier | Commencer à écrire un journal",
                     "Fevrier | Faire de votre maison un espace agréable",
-                    // ... (rest of your challenges)
+                    "Fevrier | Déconnecter du reste du monde et où faire son nid",
+                    "Mars | Méditer avoir plus de temps pour soi",
+                    "Mars | Mieux manger",
+                    "Mars | Faire plus d'exercice",
+                    "Mars | Arrêter de fumer",
+                    "Avril | Faire des petits gestes",
+                    "Avril | Dire des paroles aimables",
+                    "Mai | Prenez des cours de salsa",
+                    "Mai | Inscrivez-vous à un marathon",
+                    "Juin | Sortir dîner",
+                    "Juin | Passer du temps avec les vôtres",
+                    "Juillet | Profiter des grandes vacances",
+                    "Juillet | Profiter des festivals",
                     "Aout | Prendre une couverture"
                 ]
             """
         )
     }
     stages {
-        stage('Afficher les paramètres') {
-            steps {
-                echo "Nom: ${params.NOM}"
-                echo "Prénom: ${params.PRENOM}"
-                echo "Mot de passe: ${params.Projet_DevOps}"
-                echo "Challenges : ${params.CHALLENGES}"
-            }
-        }
-
-        stage('Exécuter le script Python') {
+        stage('Saisie des informations') {
             steps {
                 script {
-                    // Exécuter le code Python à partir du fichier date.py avec les challenges sélectionnés
-                    def result = bat(script: "python date.py \"${params.CHALLENGES}\" 2>&1", returnStatus: true)
+                    // Saisie des informations
+                    def userNom = input(message: 'Entrez votre nom', parameters: [string(defaultValue: '', description: 'Nom', name: 'NOM')])
+                    def userPrenom = input(message: 'Entrez votre prénom', parameters: [string(defaultValue: '', description: 'Prénom', name: 'PRENOM')])
+                    def userPassword = input(message: 'Entrez un mot de passe', parameters: [password(defaultValue: '', description: 'Mot de passe', name: 'Projet_DevOps')])
+                    def selectedChallenges = input(message: 'Sélectionnez les challenges du mois que vous souhaitez faire', parameters: [extendedChoice(defaultValue: '', description: 'Challenges', name: 'CHALLENGES', type: 'PT_MULTI_SELECT', value: '', groovyScript: """
+                        return [
+                            "Janvier | Commencer à écrire un journal",
+                            "Fevrier | Faire de votre maison un espace agréable",
+                            "Fevrier | Déconnecter du reste du monde et où faire son nid",
+                            "Mars | Méditer avoir plus de temps pour soi",
+                            "Mars | Mieux manger",
+                            "Mars | Faire plus d'exercice",
+                            "Mars | Arrêter de fumer",
+                            "Avril | Faire des petits gestes",
+                            "Avril | Dire des paroles aimables",
+                            "Mai | Prenez des cours de salsa",
+                            "Mai | Inscrivez-vous à un marathon",
+                            "Juin | Sortir dîner",
+                            "Juin | Passer du temps avec les vôtres",
+                            "Juillet | Profiter des grandes vacances",
+                            "Juillet | Profiter des festivals",
+                            "Aout | Prendre une couverture"
+                        ]
+                    """)])
+
+                    // Afficher les informations saisies
+                    echo "Nom: ${userNom}"
+                    echo "Prénom: ${userPrenom}"
+                    echo "Mot de passe: ${userPassword}"
+                    echo "Challenges : ${selectedChallenges}"
+
+                    // Compter le nombre de challenges sélectionnés
+                    def countChallenges = selectedChallenges.split(',').size()
+
+                    // Exécuter le script Python avec le nombre de challenges sélectionnés
+                    def result = bat(script: "python script.py ${countChallenges}", returnStatus: true)
 
                     // Afficher la sortie de l'exécution
                     echo "Résultat de l'exécution du script : ${result}"
-
-                    // Exécuter le script Python pour compter les challenges sélectionnés
-                    def countResult = bat(script: "python count_challenges.py \"${params.CHALLENGES}\"", returnStatus: true)
-
-                    // Afficher le résultat du script de comptage
-                    echo "Résultat de l'exécution du script de comptage : ${countResult}"
-
-                    // Vérifier la date et le nombre de challenges
-                    checkDateAndChallenges(params.CHALLENGES, countResult)
                 }
             }
         }
