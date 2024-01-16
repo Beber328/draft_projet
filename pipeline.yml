@@ -56,16 +56,16 @@ pipeline {
     /* voici un exemple de stage --- courage */
     stages {
         stage('Janvier') {
-             steps {
+            steps {
                 script {
                     // Définir la constante
                     def constante = "1"
                     // Obtenir les valeurs des paramètres
-                    def challenges = "${params.CHALLENGES}".split(',').size()
+                    def challenges = "${params.CHALLENGES}".tokenize(',').size()
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
     
-                    echo "Paramètres : MOIS=${mois}, DATE_DU_JOUR=${today}, CHALLENGES=${params.CHALLENGES}.split(',').size()"
+                    echo "Paramètres : MOIS=${mois}, DATE_DU_JOUR=${today}, CHALLENGES=${params.CHALLENGES}, $(challenges)"
     
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == constante) {
