@@ -1,4 +1,3 @@
-/* Exemple pour vous aider a realiser vos souhaits enfin votre super projet */
 pipeline {
     agent any
     parameters { 
@@ -11,37 +10,39 @@ pipeline {
     }
 
     /* voici un exemple de stage --- courage */
-    stage('Janvier') {
-        steps {
-            script {
-                def challenges = "${params.CHALLENGES}"
-                def today = "${params.DATE_DU_JOUR}"
-                def mois = "${params.MOIS}"
+    stages {
+        stage('Janvier') {
+            steps {
+                script {
+                    def challenges = "${params.CHALLENGES}"
+                    def today = "${params.DATE_DU_JOUR}"
+                    def mois = "${params.MOIS}"
 
-                if (mois == "Janvier" && today == '1') {
-                    challenges = "Prendre du temps pour écrire, Rédiger et garder précieusement un journal intime"
-                    echo "Bienvenue au mois de $mois"
-                    echo "Voici les challenges possibles : $challenges"
-                    sleep 10
-                } else if (mois == "Janvier" && today > '1' && today <= '20') {
-                    echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
-                    sleep 10
+                    if (mois == "Janvier" && today == '1') {
+                        challenges = "Prendre du temps pour écrire, Rédiger et garder précieusement un journal intime"
+                        echo "Bienvenue au mois de $mois"
+                        echo "Voici les challenges possibles : $challenges"
+                        sleep 10
+                    } else if (mois == "Janvier" && today > '1' && today <= '20') {
+                        echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
+                        sleep 10
+                    }
                 }
             }
         }
-    }
 
-    /* on peut utiliser ou faire un Skip si la condition est remplie */
-    stage('TEST') {
-        steps {
-            script{
-                if (params.SKIP_TEST) {
-                    echo 'Skipping tests...'
-                } else {
-                    echo 'Testing app...'
-                    echo 'Test OK!'
-                    /* Fin de l'action  Skip */
-                    /* A vous de terminer ce super script ----- Bon courage */
+        /* on peut utiliser ou faire un Skip si la condition est remplie */
+        stage('TEST') {
+            steps {
+                script {
+                    if (params.SKIP_TEST) {
+                        echo 'Skipping tests...'
+                    } else {
+                        echo 'Testing app...'
+                        echo 'Test OK!'
+                        /* Fin de l'action  Skip */
+                        /* A vous de terminer ce super script ----- Bon courage */
+                    }
                 }
             }
         }
