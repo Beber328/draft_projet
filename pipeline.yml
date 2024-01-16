@@ -4,42 +4,39 @@ pipeline {
         string(name: 'NOM', description: 'Veuillez indiquer votre nom')
         string(name: 'PRENOM', description: 'Veuillez indiquer votre prénom')
         password(name: 'SONAR_SERVER_PWD', description: 'Entrer votre mot de passe SONAR')
-    
-        // Paramètre pour choisir le(s) mois
-        string(name: 'MOIS', description: 'Choisissez le(s) mois', defaultValue: 'Janvier', trim: false, multiSelect: true, 
-               choiceType: 'PT_MULTI_SELECT', choices: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'])
-    
-        // Paramètre étendu pour choisir le challenge réaliser pour ce mois
-        extendedChoice(name: 'CHALLENGES', description: 'Choisissez le challenge du mois', multiSelectDelimiter: ',', 
-                       type: 'PT_MULTI_SELECT', value: '',
-                       groovyScript: """
-                           return [
-                               'Janvier | Commencer à écrire un journal',
-                               'Février | Faire de votre maison un espace agréable',
-                               'Février | Déconnecter du reste du monde et où faire son nid',
-                               'Mars | Méditer avoir plus de temps pour soi',
-                               'Mars | Mieux manger',
-                               'Mars | Faire plus d\'exercice',
-                               'Mars | Arrêter de fumer',
-                               'Avril | Faire des petits gestes',
-                               'Avril | Dire des paroles aimables',
-                               'Mai | Prenez des cours de salsa',
-                               'Mai | Inscrivez-vous à un marathon',
-                               'Juin | Sortir dîner',
-                               'Juin | Passer du temps avec les vôtres',
-                               'Juillet | Profiter des grandes vacances',
-                               'Juillet | Profiter des festivals',
-                               'Août | Prendre une couverture',
-                               'Septembre | Explorez de nouveaux terrains',
-                               'Septembre | Sortir de sa zone de confort',
-                               'Octobre | Savoir se recycler',
-                               'Octobre | Acquérir de nouvelles connaissances',
-                               'Novembre | Apprendre un nouvel instrument',
-                               'Décembre | Faire une prise de conscience sur comment respirer d\'environ 5min par jour'
-                           ]
-                       """
+        
+        // Paramètre de sélection multiple pour le mois
+        extendedChoice(
+            name: 'MOIS',
+            description: 'Choisissez le(s) mois',
+            multiSelectDelimiter: ',',
+            type: 'PT_MULTI_SELECT',
+            groovyScript: """
+                return ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+            """
         )
-}
+    
+        // Paramètre de sélection multiple pour les challenges
+        extendedChoice(
+            name: 'CHALLENGES',
+            description: 'Choisissez le(s) challenge(s) pour ce mois',
+            multiSelectDelimiter: ',',
+            type: 'PT_MULTI_SELECT',
+            groovyScript: """
+                def mois = build.getEnvironment(listener)['MOIS']
+                switch (mois) {
+                    case 'Janvier':
+                        return ['Commencer à écrire un journal', 'Prendre du temps pour écrire']
+                    case 'Février':
+                        return ['Faire de votre maison un espace agréable', 'Déconnecter du reste du monde et où faire son nid']
+                    // Ajoutez les cas pour les autres mois avec leurs challenges respectifs
+                    default:
+                        return []
+                }
+            """
+        )
+    }
+
 
     /* voici un exemple de stage --- courage */
     stages {
