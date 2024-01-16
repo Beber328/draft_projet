@@ -1,35 +1,45 @@
 pipeline {
     agent any
-    parameters { 
+    parameters {
         string(name: 'NOM', description: 'Veuillez indiquer votre nom')
-        string(name: 'PRENOM', description: 'Veuillez indiquer votre prenom')
+        string(name: 'PRENOM', description: 'Veuillez indiquer votre prénom')
         password(name: 'SONAR_SERVER_PWD', description: 'Entrer votre mot de passe SONAR')
-        choice(name: 'MOIS', choices: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet','Aout', 'Septembre', 'Octobre','Novembre', 'Decembre'], description: 'Choisissez le mois')
-        choice(name: 'DATE_DU_JOUR', choices: ['1', '2', '3', '4', '5', '6', '7','8', '9', '10','11', '12','13', '14', '15', '16', '17', '18', '19','20', '21', '22','23', '24','25','26','27','28','29','30','31'], description: 'Quel est la date du jour ?')
-        choice(name: 'CHALLENGES', choices: ["Janvier | Commencer a ecrire un journal",
-                                              "Fevrier | Faire de votre maison un espace agreable",
-                                              "Fevrier | Deconnecter du reste du monde et ou faire son nid",
-                                              "Mars | Mediter avoir plus de temps pour soi",
-                                              "Mars | Mieux manger",
-                                              "Mars | Faire plus d'exercice",
-                                              "Mars | Arreter de fumer",
-                                              "Avril | Faire des petits gestes",
-                                              "Avril | Dire des paroles aimables",
-                                              "Mai | Prenez des cours de salsa",
-                                              "Mai | Inscrivez-vous a un marathon",
-                                              "Juin | Sortir diner",
-                                              "Juin | Passer du temps avec les votres",
-                                              "Juillet | Profiter des grandes vacances",
-                                              "Juillet | Profiter des festivals",
-                                              "Aout | Prendre une couverture",
-                                              "Septembre | Explorez de nouveaux terrains",
-                                              "Septembre | Sortir de sa zone de confort",
-                                              "Octobre | Savoir se recycler",
-                                              "Octobre | Acquerir de nouvelles connaissances",
-                                              "Novembre | Apprendre un nouvel instrument",
-                                              "Decembre | Faire une prise de conscience sur comment respirer d'environ 5min par jour"],
-                                              description: 'Entrer les challenge du mois que vous souahitez faire : ')
-    }
+    
+        // Paramètre pour choisir le(s) mois
+        string(name: 'MOIS', description: 'Choisissez le(s) mois', defaultValue: 'Janvier', trim: false, multiSelect: true, 
+               choiceType: 'PT_MULTI_SELECT', choices: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'])
+    
+        // Paramètre étendu pour choisir le challenge réaliser pour ce mois
+        extendedChoice(name: 'CHALLENGES', description: 'Choisissez le challenge du mois', multiSelectDelimiter: ',', 
+                       type: 'PT_MULTI_SELECT', value: '',
+                       groovyScript: """
+                           return [
+                               'Janvier | Commencer à écrire un journal',
+                               'Février | Faire de votre maison un espace agréable',
+                               'Février | Déconnecter du reste du monde et où faire son nid',
+                               'Mars | Méditer avoir plus de temps pour soi',
+                               'Mars | Mieux manger',
+                               'Mars | Faire plus d\'exercice',
+                               'Mars | Arrêter de fumer',
+                               'Avril | Faire des petits gestes',
+                               'Avril | Dire des paroles aimables',
+                               'Mai | Prenez des cours de salsa',
+                               'Mai | Inscrivez-vous à un marathon',
+                               'Juin | Sortir dîner',
+                               'Juin | Passer du temps avec les vôtres',
+                               'Juillet | Profiter des grandes vacances',
+                               'Juillet | Profiter des festivals',
+                               'Août | Prendre une couverture',
+                               'Septembre | Explorez de nouveaux terrains',
+                               'Septembre | Sortir de sa zone de confort',
+                               'Octobre | Savoir se recycler',
+                               'Octobre | Acquérir de nouvelles connaissances',
+                               'Novembre | Apprendre un nouvel instrument',
+                               'Décembre | Faire une prise de conscience sur comment respirer d\'environ 5min par jour'
+                           ]
+                       """
+        )
+}
 
     /* voici un exemple de stage --- courage */
     stages {
