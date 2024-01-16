@@ -66,14 +66,14 @@ pipeline {
                     def mois = "${params.MOIS}"
     
                     // Vérifier si la valeur de challenges est égale à la constante
-                    if (challenges >= constante) {
-                        echo "Tous les challenges du mois de $mois sont réalisés."
-                    } else if (mois == "Janvier" && today == '1') {
+                    if (challenges == 1) {
+                        echo "Un seul challenge du mois de $mois est réalisé."
+                    } else if (challenges == 0 && mois == "Janvier" && today == '1') {
                         challenges = "Commencer a ecrire un journal"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
-                    } else if (mois == "Janvier" && today > '1' && today <= '20') {
+                    } else if (challenges == 0 && mois == "Janvier" && today > '1' && today <= '20') {
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
