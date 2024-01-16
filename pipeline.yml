@@ -43,11 +43,18 @@ pipeline {
         stage('Janvier') {
             steps {
                 script {
+                    // Définir la constante
+                    def constante = "1"
+                    
+                    // Obtenir les valeurs des paramètres
                     def challenges = "${params.CHALLENGES}"
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
-
-                    if (mois == "Janvier" && today == '1') {
+        
+                    // Vérifier si la valeur de challenges est égale à la constante
+                    if (challenges == constante) {
+                        echo "Tous les challenges du mois sont réalisés."
+                    } else if (mois == "Janvier" && today == '1') {
                         challenges = "Commencer a ecrire un journal"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
