@@ -41,11 +41,30 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (mois == "Janvier" && today == '1') {
-                        challenges = "Prendre du temps pour écrire, Rédiger et garder précieusement un journal intime"
+                        challenges = "Commencer a ecrire un journal"
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (mois == "Janvier" && today > '1' && today <= '20') {
+                        echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
+                        sleep 10
+                    }
+                }
+            }
+        }
+          stage('Fevrier') {
+            steps {
+                script {
+                    def challenges = "${params.CHALLENGES}"
+                    def today = "${params.DATE_DU_JOUR}"
+                    def mois = "${params.MOIS}"
+
+                    if (mois == "Fevrier" && today == '1') {
+                        challenges = "Faire de votre maison un espace agreable, Deconnecter du reste du monde et ou faire son nid"
+                        echo "Bienvenue au mois de $mois"
+                        echo "Voici les challenges possibles : $challenges"
+                        sleep 10
+                    } else if (mois == "Fevrier" && today > '1' && today <= '20') {
                         echo "Attention, nous sommes le $today du mois, il ne vous reste plus beaucoup de temps pour faire vos objectifs."
                         sleep 10
                     }
