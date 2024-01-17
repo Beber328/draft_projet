@@ -68,7 +68,7 @@ pipeline {
     
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == 1) {
-                        echo "Un seul challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Janvier" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -93,7 +93,7 @@ pipeline {
 
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Fevrier" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -117,7 +117,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 4) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 4 && mois == "Mars" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -141,7 +141,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Avril" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -165,7 +165,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Mai" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -189,7 +189,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Juin" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -213,7 +213,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Juillet" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -237,7 +237,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 1) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Aout" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -261,7 +261,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Septembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -285,7 +285,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 2) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Octobre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -309,7 +309,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 1) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Novembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
@@ -333,7 +333,7 @@ pipeline {
                     def mois = "${params.MOIS}"
 
                     if (challenges == 1) {
-                        echo "Tout les challenge du mois de $mois est réalisé."
+                        echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Decembre" && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         echo "Voici les challenges possibles : $challenges"
