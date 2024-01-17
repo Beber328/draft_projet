@@ -123,7 +123,6 @@ pipeline {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 4 && mois == "Mars" && today == '1') {
                         // Initialisez la variable disponible
-                        def disponible = "1-" + challenges
                         echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 4 && mois == "Mars" && today > '1' && today <= '20') {
