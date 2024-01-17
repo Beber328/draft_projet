@@ -68,7 +68,7 @@ pipeline {
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == 1) {
                         echo "Tout les challenge du mois de $mois est realise."
-                    } else if ($challenges < 1 && mois.equals('Janvier') && today == '1') {
+                    } else if ($challenges < 1 && mois =='Janvier' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
                         echo "Voici les challenges possibles : $challenges"
