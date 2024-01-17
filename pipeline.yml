@@ -71,7 +71,9 @@ pipeline {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Janvier" && today == '1') {
                         echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges == 0 && mois == "Janvier" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -95,8 +97,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Fevrier" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Janvier" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -119,8 +122,9 @@ pipeline {
                     if (challenges == 4) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 4 && mois == "Mars" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 4 && mois == "Mars" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -143,8 +147,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Avril" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Avril" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -167,8 +172,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Mai" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Mai" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -191,8 +197,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Juin" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Juin" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -215,8 +222,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Juillet" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Juillet" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -239,8 +247,9 @@ pipeline {
                     if (challenges == 1) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Aout" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 1 && mois == "Aout" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -263,8 +272,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Septembre" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Septembre" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -287,8 +297,9 @@ pipeline {
                     if (challenges == 2) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 2 && mois == "Octobre" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 2 && mois == "Octobre" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -311,8 +322,9 @@ pipeline {
                     if (challenges == 1) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Novembre" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 1 && mois == "Novembre" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
@@ -335,8 +347,9 @@ pipeline {
                     if (challenges == 1) {
                         echo "Tout les challenge du mois de $mois est realise."
                     } else if (challenges < 1 && mois == "Decembre" && today == '1') {
-                        echo "Bienvenue au mois de $mois"
-                        echo "Voici les challenges possibles : $challenges"
+                        // Initialisez la variable disponible
+                        def disponible = "1-" + challenges
+                        echo "Voici les challenges possibles : $disponible"
                         sleep 10
                     } else if (challenges < 1 && mois == "Decembre" && today > '1' && today <= '20') {
                         echo "Bienvenue au mois de $mois"
