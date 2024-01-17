@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'NAME', description: 'Please tell me your name')
+        string(name: 'AGE', description: 'What is your age?')
+        string(name: 'WEIGHT', description: 'Please tell me your weight (in KG)')
+        string(name: 'HEIGHT', description: 'Please tell me your height (in cm)')
+        string(name: 'LOSE', description: 'How many weight you want lose? (in KG)')
+        booleanParam(name: 'SKIP_TEST', description: 'Want to skip running Test cases?')
+        choice(name: 'SEX', choices: ['MALE','FEMALE'], description: 'Choose your sex')
+    }
