@@ -5,7 +5,30 @@ pipeline {
         string(name: 'AGE', description: 'What is your age?')
         string(name: 'WEIGHT', description: 'Please tell me your weight (in KG)')
         string(name: 'HEIGHT', description: 'Please tell me your height (in cm)')
-        string(name: 'LOSE', description: 'How many weight you want lose? (in KG)')
+        string(name: 'LOSE', description: 'How many weight you want to lose? (in KG)')
         booleanParam(name: 'SKIP_TEST', description: 'Want to skip running Test cases?')
         choice(name: 'SEX', choices: ['MALE','FEMALE'], description: 'Choose your sex')
     }
+    stages {
+        stage('Calculate IMC') {
+            steps {
+                script {
+                    def weight = params.WEIGHT.toBigDecimal()
+                    def height = params.HEIGHT.toBigDecimal()
+
+                    def calculateImcScript = readFile('imc.py').trim()
+                    def calculateImcModule = evaluate(calculateImcScript)
+
+                    def imc = calculateImcModule.calculate_imc(weight, height)
+
+                    echo "Name: ${params.NAME}"
+                    echo "Age: ${params.AGE}"
+                    echo "Weight: ${params.WEIGHT} KG"
+                    echo "Height: ${params.HEIGHT} cm"
+                    echo "Sex: ${params.SEX}"
+                    echo "IMC: ${imc}"
+                }
+            }
+        }
+    }
+}
