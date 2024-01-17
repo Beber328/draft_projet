@@ -57,7 +57,7 @@ pipeline {
     stages {
         stage('Janvier') {
             when{
-                expression {params.MOIS == 'Janvier'}
+                expression {params.MOIS.equals('Janvier')}
             }
             steps {
                 script {
@@ -84,7 +84,7 @@ pipeline {
         }
         stage('Fevrier') {
             when{
-                expression {params.MOIS == 'Fevrier'}
+                expression {params.MOIS.equals('Fevrier')}
             }
             steps {
                 script {
@@ -109,7 +109,7 @@ pipeline {
         }
         stage('Mars') {
             when{
-                    expression {params.MOIS == 'Mars'}
+                expression {params.MOIS.equals('Mars')}
             }
             steps {
                 script {
@@ -133,7 +133,7 @@ pipeline {
         }
         stage('Avril') {
             when{
-                    expression {params.MOIS == 'Avril'}
+                    expression {params.MOIS.equals('Avril')}
             }
             steps {
                 script {
@@ -157,7 +157,7 @@ pipeline {
         }
         stage('Mai') {
             when{
-                    expression {params.MOIS == 'Mai'}
+                    expression {params.MOIS.equals('Mai')}
             }
             steps {
                 script {
@@ -181,7 +181,7 @@ pipeline {
         }
         stage('Juin') {
             when{
-                    expression {params.MOIS == 'Juin'}
+                    expression {params.MOIS.equals('Juin')}
             }
             steps {
                 script {
@@ -205,7 +205,7 @@ pipeline {
         }
         stage('Juillet') {
             when{
-                    expression {params.MOIS == 'Juillet'}
+                    expression {params.MOIS.equals('Juillet')}
             }
             steps {
                 script {
@@ -229,7 +229,7 @@ pipeline {
         }
         stage('Aout') {
             when{
-                    expression {params.MOIS == 'Aout'}
+                    expression {params.MOIS.equals('Aout')}
             }
             steps {
                 script {
@@ -253,7 +253,7 @@ pipeline {
         }
         stage('Septembre') {
             when{
-                    expression {params.MOIS == 'Septembre'}
+                    expression {params.MOIS.equals('Septembre')}
             }
             steps {
                 script {
@@ -277,7 +277,7 @@ pipeline {
         }
         stage('Octobre') {
             when{
-                    expression {params.MOIS == 'Octobre'}
+                    expression {params.MOIS.equals('Octobre')}
             }
             steps {
                 script {
@@ -301,7 +301,7 @@ pipeline {
         }
         stage('Novembre') {
             when{
-                    expression {params.MOIS == 'Novembre'}
+                    expression {params.MOIS.equals('Novembre')}
             }
             steps {
                 script {
@@ -325,7 +325,7 @@ pipeline {
         }
         stage('Decembre') {
             when{
-                    expression {params.MOIS == 'Decembre'}
+                    expression {params.MOIS.equals('Decembre')}
             }
             steps {
                 script {
