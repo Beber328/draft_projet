@@ -98,7 +98,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Fevrier' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Fevrier' && today > '1' && today <= '20') {
