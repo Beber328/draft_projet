@@ -124,7 +124,7 @@ pipeline {
                     } else if (challenges < 4 && mois == 'Mars' && today == '1') {
                         // Initialisez la variable disponible
                         echo "Bienvenue au mois de $mois"
-                        challenges = 1 - challenges
+                        challenges = 4 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 4 && mois == 'Mars' && today > '1' && today <= '20') {
@@ -150,7 +150,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Avril' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Avril' && today > '1' && today <= '20') {
@@ -176,7 +176,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Mai' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Mai' && today > '1' && today <= '20') {
@@ -202,7 +202,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Juin' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Juin' && today > '1' && today <= '20') {
@@ -228,7 +228,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Juillet' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                         challenges = 1 - challenges
+                         challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Juillet' && today > '1' && today <= '20') {
@@ -280,7 +280,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Septembre' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Septembre' && today > '1' && today <= '20') {
@@ -306,7 +306,7 @@ pipeline {
                     } else if (challenges < 2 && mois == 'Octobre' && today == '1') {
                         echo "Bienvenue au mois de $mois"
                         // Initialisez la variable disponible
-                        challenges = 1 - challenges
+                        challenges = 2 - challenges
                         echo "Voici les challenges possibles : $challenges"
                         sleep 10
                     } else if (challenges < 2 && mois == 'Octobre' && today > '1' && today <= '20') {
