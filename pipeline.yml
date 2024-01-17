@@ -65,7 +65,7 @@ pipeline {
                     def challenges = "${params.CHALLENGES}".tokenize(',').size()
                     def today = "${params.DATE_DU_JOUR}"
                     def mois = "${params.MOIS}"
-    
+                    echo "$mois"
                     // Vérifier si la valeur de challenges est égale à la constante
                     if (challenges == 1) {
                         echo "Tout les challenge du mois de $mois est realise."
